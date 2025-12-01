@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeRoute — Smart Disaster Navigation</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/logo.png" alt="SafeRoute" class="nav-logo-img">
+                <span class="nav-logo-text">SafeRoute</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Smart Disaster Navigation</h1>
+            <p class="hero-subtitle">Real-time guidance to safety during emergencies</p>
+            <p class="hero-description">
+                Find nearby shelters, report hazards, and navigate safely with SafeRoute. 
+                Works offline. Trust local authorities.
+            </p>
+            <button class="btn btn-primary btn-large" onclick="startNavigation()">
+                🗺️ Open Live Map
+            </button>
+        </div>
+        <div class="hero-graphic">
+            <div class="map-preview">
+                <div class="map-marker active"></div>
+                <div class="map-marker shelter"></div>
+                <div class="map-marker hazard"></div>
+                <div class="route-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2 class="section-title">Key Features</h2>
+        <div class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <div class="feature-icon">📍</div>
+                <h3>Real-Time Location</h3>
+                <p>Get your current location and navigate to nearby shelters instantly with GPS precision.</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <div class="feature-icon">🏠</div>
+                <h3>Find Shelters</h3>
+                <p>Discover nearby shelters, community centers, and safe zones with one click.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card">
+                <div class="feature-icon">⚠️</div>
+                <h3>Report Hazards</h3>
+                <p>Alert your community about fires, floods, blocked roads, and other dangers.</p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card">
+                <div class="feature-icon">🛣️</div>
+                <h3>Smart Routing</h3>
+                <p>Get optimal driving routes with real-time distance and arrival time estimates.</p>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <h3>Safety Status</h3>
+                <p>Mark yourself as safe and inform your community that you're secure.</p>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="feature-card">
+                <div class="feature-icon">📵</div>
+                <h3>Works Offline</h3>
+                <p>Core features available without internet after initial load. Stay safe anywhere.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Enable Location</h3>
+                <p>Allow SafeRoute to access your location for accurate navigation.</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Find Shelter</h3>
+                <p>Nearby shelters appear instantly on your interactive map.</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Get Route</h3>
+                <p>Click a shelter to get real-time navigation with distance & ETA.</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Stay Safe</h3>
+                <p>Report hazards and mark yourself safe to help your community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2 class="section-title">About SafeRoute</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        SafeRoute is a smart disaster navigation system designed to help people find safety during emergencies. 
+                        Whether facing natural disasters, extreme weather, or civil emergencies, SafeRoute provides real-time 
+                        guidance to nearby shelters and safe zones.
+                    </p>
+                    <p>
+                        Built with open-source technology (OpenStreetMap, Leaflet), SafeRoute is free, transparent, and 
+                        works anywhere in the world. No proprietary data, no subscription fees—just pure safety technology.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">🌍</div>
+                            <div class="stat-label">Global Coverage</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">⚡</div>
+                            <div class="stat-label">Real-Time Updates</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">🔐</div>
+                            <div class="stat-label">Privacy-First</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="demo-phone">
+                        <div class="phone-screen">
+                            <div class="phone-map">
+                                <div class="phone-marker active"></div>
+                                <div class="phone-marker shelter"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+        <h2>Ready to Navigate to Safety?</h2>
+        <p>Start using SafeRoute in seconds. No registration needed.</p>
+        <button class="btn btn-primary btn-large" onclick="startNavigation()">
+            Launch SafeRoute Now
+        </button>
+    </section>
+
+    <!-- Login Prompt -->
+    <section class="login-prompt">
+        <div class="login-prompt-content">
+            <h3>Want to help during emergencies?</h3>
+            <p>Join our donor network to provide aid and coordinate resources</p>
+            <a href="login.html" class="btn btn-secondary">Become a Donor</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 SafeRoute. Free, open-source disaster navigation.</p>
+            <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 10px;">
+                Always verify emergency information with local authorities. SafeRoute complements, not replaces, official emergency services.
+            </p>
+        </div>
+    </footer>
+
+    <script src="assets/home.js"></script>
+</body>
+</html>

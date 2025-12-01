@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeRoute Login - Smart Disaster Navigation</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left Panel - Branding -->
+        <div class="login-left">
+            <div class="login-branding">
+                <img src="images/logo.png" alt="SafeRoute" class="login-logo">
+                <h1>SafeRoute</h1>
+                <p>Smart Disaster Navigation</p>
+                <div class="login-features">
+                    <div class="login-feature">
+                        <span class="feature-icon">📍</span>
+                        <span>Real-time navigation</span>
+                    </div>
+                    <div class="login-feature">
+                        <span class="feature-icon">🏠</span>
+                        <span>Find nearby shelters</span>
+                    </div>
+                    <div class="login-feature">
+                        <span class="feature-icon">⚠️</span>
+                        <span>Report hazards</span>
+                    </div>
+                    <div class="login-feature">
+                        <span class="feature-icon">🤝</span>
+                        <span>Community assistance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Login Form -->
+        <div class="login-right">
+            <div class="login-form-container">
+                <!-- Tabs -->
+                <div class="login-tabs">
+                    <button class="login-tab active" onclick="switchTab('user')">
+                        👤 User Login
+                    </button>
+                    <button class="login-tab" onclick="switchTab('donor')">
+                        🤝 Donor Portal
+                    </button>
+                </div>
+
+                <!-- User Login Tab -->
+                <div id="user-tab" class="login-tab-content active">
+                    <h2>Welcome Back</h2>
+                    <p class="login-subtitle">Sign in to access live navigation</p>
+
+                    <form onsubmit="loginUser(event)">
+                        <div class="form-group">
+                            <label for="user-email">Email Address</label>
+                            <input 
+                                type="email" 
+                                id="user-email" 
+                                placeholder="your@email.com" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user-password">Password</label>
+                            <input 
+                                type="password" 
+                                id="user-password" 
+                                placeholder="••••••••" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                <span>Remember me</span>
+                            </label>
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Sign In
+                        </button>
+                    </form>
+
+                    <div class="login-divider">or continue as guest</div>
+
+                    <button type="button" class="btn btn-secondary btn-full" onclick="continueAsGuest()">
+                        🗺️ Skip to Map (Anonymous)
+                    </button>
+
+                    <p class="login-footer">
+                        Don't have an account? <a href="#" class="signup-link">Sign up here</a>
+                    </p>
+                </div>
+
+                <!-- Donor Portal Tab -->
+                <div id="donor-tab" class="login-tab-content">
+                    <h2>Donor Portal</h2>
+                    <p class="login-subtitle">Provide emergency aid and resources</p>
+
+                    <form onsubmit="loginDonor(event)">
+                        <div class="form-group">
+                            <label for="donor-email">Organization Email</label>
+                            <input 
+                                type="email" 
+                                id="donor-email" 
+                                placeholder="contact@organization.com" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="donor-password">Password</label>
+                            <input 
+                                type="password" 
+                                id="donor-password" 
+                                placeholder="••••••••" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                <span>Remember me</span>
+                            </label>
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Access Donor Dashboard
+                        </button>
+                    </form>
+
+                    <div class="donor-info">
+                        <h4>✋ New Donor?</h4>
+                        <p>Register your organization to provide emergency aid and resources to people in crisis.</p>
+                        <button type="button" class="btn btn-secondary btn-full" onclick="openDonorRegister()">
+                            Register Your Organization
+                        </button>
+                    </div>
+
+                    <p class="login-footer">
+                        Partners with NGOs, Community Centers, Medical Centers, Food Banks & more
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/login.js"></script>
+</body>
+</html>

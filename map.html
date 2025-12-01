@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeRoute Map — Live Navigation</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="map-container">
+        <!-- Floating Control Panel -->
+        <div class="control-panel">
+            <div class="panel-header">
+                <h2>Navigation Panel</h2>
+                <div class="panel-header-actions">
+                    <a href="login.html" class="btn btn-secondary btn-small" style="text-decoration: none;">Login</a>
+                    <button class="btn-close" onclick="closePanel()">&times;</button>
+                </div>
+            </div>
+
+            <!-- Search Section -->
+            <div class="search-section">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-bar" 
+                    placeholder="Search city, place, or 'shelter'"
+                    onkeypress="handleSearchKeyPress(event)"
+                >
+                <button class="btn btn-secondary btn-small" onclick="performSearch()">Search</button>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-success btn-medium" onclick="findNearestShelter()">
+                    📍 Nearest Shelter
+                </button>
+                <button class="btn btn-warning btn-medium" onclick="reportHazard()">
+                    ⚠️ Report Hazard
+                </button>
+                <button class="btn btn-info btn-medium" onclick="markSafe()">
+                    ✓ I'm Safe
+                </button>
+            </div>
+
+            <!-- Route Summary -->
+            <div class="route-summary">
+                <h3>Route Summary</h3>
+                <p id="routeInfo">No active route</p>
+                <div id="routeDetails" class="route-details"></div>
+            </div>
+
+            <!-- Hazard Alerts -->
+            <div class="hazard-alerts">
+                <h3>⚠️ Hazard Alerts</h3>
+                <div id="hazardList" class="hazard-list">
+                    <p class="no-hazards">No hazards reported</p>
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <button class="btn btn-secondary btn-full" onclick="goHome()">
+                ← Back to Home
+            </button>
+        </div>
+
+        <!-- Leaflet Map -->
+        <div id="map"></div>
+    </div>
+
+    <!-- Hazard Report Modal -->
+    <div id="hazardModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Report Hazard</h2>
+            <div class="modal-form">
+                <label for="hazardType">Hazard Type:</label>
+                <select id="hazardType">
+                    <option value="">Select...</option>
+                    <option value="fire">🔥 Fire</option>
+                    <option value="flood">💧 Flood</option>
+                    <option value="blocked">🚫 Road Blocked</option>
+                    <option value="earthquake">📍 Earthquake</option>
+                    <option value="other">❓ Other</option>
+                </select>
+
+                <label for="hazardDesc">Description:</label>
+                <textarea id="hazardDesc" placeholder="Brief description (optional)"></textarea>
+
+                <div class="modal-buttons">
+                    <button class="btn btn-success" onclick="submitHazard()">Report</button>
+                    <button class="btn btn-secondary" onclick="closeHazardModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Safe Report Modal -->
+    <div id="safeModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Mark Yourself Safe</h2>
+            <p>Your location will be shared as safe for community alerts.</p>
+            <div class="modal-buttons">
+                <button class="btn btn-success" onclick="submitSafeReport()">Confirm</button>
+                <button class="btn btn-secondary" onclick="closeSafeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/map.js"></script>
+</body>
+</html>

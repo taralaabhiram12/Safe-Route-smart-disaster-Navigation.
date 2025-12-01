@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Coordination - SafeRoute Donor Network</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="emergency-container">
+        <!-- Header -->
+        <header class="emergency-header">
+            <div class="emergency-header-content">
+                <div class="header-left">
+                    <a href="login.html" class="header-logo">
+                        <img src="images/logo.png" alt="SafeRoute">
+                        <span>SafeRoute</span>
+                    </a>
+                </div>
+                <div class="header-title">
+                    <h1>🚨 Emergency Coordination Center</h1>
+                </div>
+                <div class="header-right">
+                    <span class="user-name">Donor Network</span>
+                    <button class="btn btn-secondary btn-small" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="emergency-main">
+            <!-- Sidebar -->
+            <aside class="emergency-sidebar">
+                <nav class="sidebar-menu">
+                    <button class="sidebar-item active" onclick="switchEmergencyTab('dashboard')">
+                        📊 Dashboard
+                    </button>
+                    <button class="sidebar-item" onclick="switchEmergencyTab('incidents')">
+                        🆘 Active Incidents
+                    </button>
+                    <button class="sidebar-item" onclick="switchEmergencyTab('requests')">
+                        📋 Aid Requests
+                    </button>
+                    <button class="sidebar-item" onclick="switchEmergencyTab('resources')">
+                        📦 Manage Resources
+                    </button>
+                    <button class="sidebar-item" onclick="switchEmergencyTab('volunteers')">
+                        👥 Volunteers
+                    </button>
+                    <button class="sidebar-item" onclick="switchEmergencyTab('analytics')">
+                        📈 Analytics
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <main class="emergency-content">
+                <!-- Dashboard Tab -->
+                <div id="dashboard-tab" class="emergency-tab active">
+                    <h2>Emergency Status Dashboard</h2>
+                    
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card urgent">
+                            <div class="stat-icon">🆘</div>
+                            <div class="stat-info">
+                                <div class="stat-value">12</div>
+                                <div class="stat-label">Active Emergencies</div>
+                            </div>
+                        </div>
+                        <div class="stat-card warning">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-info">
+                                <div class="stat-value">847</div>
+                                <div class="stat-label">People Affected</div>
+                            </div>
+                        </div>
+                        <div class="stat-card success">
+                            <div class="stat-icon">✓</div>
+                            <div class="stat-info">
+                                <div class="stat-value">234</div>
+                                <div class="stat-label">Helped</div>
+                            </div>
+                        </div>
+                        <div class="stat-card info">
+                            <div class="stat-icon">📦</div>
+                            <div class="stat-info">
+                                <div class="stat-value">45</div>
+                                <div class="stat-label">Resources Available</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Emergencies -->
+                    <div class="emergency-section">
+                        <h3>Current Emergencies</h3>
+                        <div class="emergency-list">
+                            <div class="emergency-item critical">
+                                <div class="emergency-header-item">
+                                    <span class="emergency-type">🔥 Fire</span>
+                                    <span class="emergency-location">Downtown District, Area 5</span>
+                                    <span class="emergency-time">2 hours ago</span>
+                                </div>
+                                <div class="emergency-body">
+                                    <p><strong>Affected:</strong> 150+ people</p>
+                                    <p><strong>Status:</strong> Ongoing - Evacuation in progress</p>
+                                    <p><strong>Needs:</strong> Medical supplies, temporary shelter, food</p>
+                                </div>
+                                <div class="emergency-actions">
+                                    <button class="btn btn-danger btn-small" onclick="viewIncident(1)">View Details</button>
+                                    <button class="btn btn-success btn-small" onclick="offerHelp(1)">Offer Help</button>
+                                </div>
+                            </div>
+
+                            <div class="emergency-item critical">
+                                <div class="emergency-header-item">
+                                    <span class="emergency-type">💧 Flood</span>
+                                    <span class="emergency-location">riverside, North Valley</span>
+                                    <span class="emergency-time">5 hours ago</span>
+                                </div>
+                                <div class="emergency-body">
+                                    <p><strong>Affected:</strong> 320 families</p>
+                                    <p><strong>Status:</strong> Water receding - Recovery phase</p>
+                                    <p><strong>Needs:</strong> Drinking water, food, sanitation supplies</p>
+                                </div>
+                                <div class="emergency-actions">
+                                    <button class="btn btn-danger btn-small" onclick="viewIncident(2)">View Details</button>
+                                    <button class="btn btn-success btn-small" onclick="offerHelp(2)">Offer Help</button>
+                                </div>
+                            </div>
+
+                            <div class="emergency-item warning">
+                                <div class="emergency-header-item">
+                                    <span class="emergency-type">🌪️ Severe Weather</span>
+                                    <span class="emergency-location">Central Region, all zones</span>
+                                    <span class="emergency-time">30 minutes ago</span>
+                                </div>
+                                <div class="emergency-body">
+                                    <p><strong>Affected:</strong> Multiple neighborhoods</p>
+                                    <p><strong>Status:</strong> Alert - Preparing shelters</p>
+                                    <p><strong>Needs:</strong> Emergency shelter, blankets, first aid</p>
+                                </div>
+                                <div class="emergency-actions">
+                                    <button class="btn btn-danger btn-small" onclick="viewIncident(3)">View Details</button>
+                                    <button class="btn btn-success btn-small" onclick="offerHelp(3)">Offer Help</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="emergency-section">
+                        <h3>Quick Actions</h3>
+                        <div class="action-buttons-grid">
+                            <button class="action-btn" onclick="broadcastAlert()">
+                                📢 Send Alert to Network
+                            </button>
+                            <button class="action-btn" onclick="createAidRequest()">
+                                📋 Create Aid Request
+                            </button>
+                            <button class="action-btn" onclick="allocateResources()">
+                                📦 Allocate Resources
+                            </button>
+                            <button class="action-btn" onclick="coordCoordinators()">
+                                👥 Coordinate with Others
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Incidents Tab -->
+                <div id="incidents-tab" class="emergency-tab">
+                    <h2>Active Incidents</h2>
+                    <div class="incident-filters">
+                        <button class="filter-btn active" onclick="filterIncidents('all')">All</button>
+                        <button class="filter-btn" onclick="filterIncidents('fire')">🔥 Fire</button>
+                        <button class="filter-btn" onclick="filterIncidents('flood')">💧 Flood</button>
+                        <button class="filter-btn" onclick="filterIncidents('earthquake')">📍 Earthquake</button>
+                        <button class="filter-btn" onclick="filterIncidents('weather')">🌪️ Weather</button>
+                    </div>
+                    <div class="incidents-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Location</th>
+                                    <th>Affected</th>
+                                    <th>Status</th>
+                                    <th>Reported</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="critical">
+                                    <td><span class="badge badge-danger">🔥 Fire</span></td>
+                                    <td>Downtown District</td>
+                                    <td>150+</td>
+                                    <td><span class="status-ongoing">Ongoing</span></td>
+                                    <td>2h ago</td>
+                                    <td><button class="btn btn-small btn-info" onclick="respondToIncident(1)">Respond</button></td>
+                                </tr>
+                                <tr class="critical">
+                                    <td><span class="badge badge-warning">💧 Flood</span></td>
+                                    <td>riverside</td>
+                                    <td>320 families</td>
+                                    <td><span class="status-recovery">Recovery</span></td>
+                                    <td>5h ago</td>
+                                    <td><button class="btn btn-small btn-info" onclick="respondToIncident(2)">Respond</button></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-info">🌪️ Weather</span></td>
+                                    <td>Central Region</td>
+                                    <td>Multiple zones</td>
+                                    <td><span class="status-alert">Alert</span></td>
+                                    <td>30m ago</td>
+                                    <td><button class="btn btn-small btn-info" onclick="respondToIncident(3)">Respond</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Aid Requests Tab -->
+                <div id="requests-tab" class="emergency-tab">
+                    <h2>Aid Requests</h2>
+                    <button class="btn btn-primary" onclick="createNewRequest()" style="margin-bottom: 20px;">
+                        + Create New Request
+                    </button>
+
+                    <div class="requests-list">
+                        <div class="request-card high-priority">
+                            <div class="request-header">
+                                <span class="request-priority">High Priority</span>
+                                <span class="request-id">#REQ-001</span>
+                            </div>
+                            <h4>Emergency Medical Supplies Needed</h4>
+                            <p><strong>Location:</strong> Downtown Hospital, Area 5</p>
+                            <p><strong>Required:</strong> Bandages, antibiotics, pain relievers, blood bags</p>
+                            <p><strong>Quantity:</strong> 500+ units</p>
+                            <p><strong>Deadline:</strong> Today by 6 PM</p>
+                            <div class="request-actions">
+                                <button class="btn btn-success btn-small" onclick="fulfillRequest(1)">I Can Provide</button>
+                                <button class="btn btn-secondary btn-small" onclick="viewRequest(1)">View Details</button>
+                            </div>
+                        </div>
+
+                        <div class="request-card high-priority">
+                            <div class="request-header">
+                                <span class="request-priority">High Priority</span>
+                                <span class="request-id">#REQ-002</span>
+                            </div>
+                            <h4>Temporary Shelter & Bedding</h4>
+                            <p><strong>Location:</strong> riverside Camp</p>
+                            <p><strong>Required:</strong> Tents, sleeping bags, blankets, mattresses</p>
+                            <p><strong>Quantity:</strong> 320 units</p>
+                            <p><strong>Deadline:</strong> ASAP</p>
+                            <div class="request-actions">
+                                <button class="btn btn-success btn-small" onclick="fulfillRequest(2)">I Can Provide</button>
+                                <button class="btn btn-secondary btn-small" onclick="viewRequest(2)">View Details</button>
+                            </div>
+                        </div>
+
+                        <div class="request-card medium-priority">
+                            <div class="request-header">
+                                <span class="request-priority">Medium Priority</span>
+                                <span class="request-id">#REQ-003</span>
+                            </div>
+                            <h4>Food & Water Distribution</h4>
+                            <p><strong>Location:</strong> Central Relief Center</p>
+                            <p><strong>Required:</strong> Canned food, bottled water, dry rations</p>
+                            <p><strong>Quantity:</strong> 1000+ meals, 5000L water</p>
+                            <p><strong>Deadline:</strong> Within 2 days</p>
+                            <div class="request-actions">
+                                <button class="btn btn-success btn-small" onclick="fulfillRequest(3)">I Can Provide</button>
+                                <button class="btn btn-secondary btn-small" onclick="viewRequest(3)">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manage Resources Tab -->
+                <div id="resources-tab" class="emergency-tab">
+                    <h2>Resource Inventory</h2>
+                    <button class="btn btn-primary" onclick="addNewResource()" style="margin-bottom: 20px;">
+                        + Add Resource
+                    </button>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-header">
+                                <h4>Medical Supplies</h4>
+                                <span class="resource-count">45 units</span>
+                            </div>
+                            <div class="resource-items">
+                                <div class="resource-item">
+                                    <span>Bandages & Gauze</span>
+                                    <span class="quantity">15 units</span>
+                                </div>
+                                <div class="resource-item">
+                                    <span>Antibiotics</span>
+                                    <span class="quantity">12 units</span>
+                                </div>
+                                <div class="resource-item">
+                                    <span>Pain Relievers</span>
+                                    <span class="quantity">10 units</span>
+                                </div>
+                                <div class="resource-item">
+                                    <span>Blood Bags</span>
+                                    <span class="quantity">8 units</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary btn-small btn-full" onclick="updateResource(1)">
+                                Update Inventory
+                            </button>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-header">
+                                <h4>Emergency Shelter</h4>
+                                <span class="resource-count">80 units</span>
+                            </div>
+                            <div class="resource-items">
+                                <div class="resource-item">
+                                    <span>Tents (4-person)</span>
+                                    <span class="quantity">30 units</span>
+                                </div>
+                                <div class="resource-item">
+                                    <span>Sleeping Bags</span>
+                                    <span class="quantity">25 units</span>
+                                </div>
+                                <div class="resource-item">
+                                    <span>Blankets</span>
+                                    <span class="quantity">20 units</span>
+                                </div>
+                                <div class="resource-item">
+                                    <span>Mattresses</span>
+                                    <span class="quantity">5 units</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary btn-small btn-full" onclick="updateResource(2)">
+                                Update Inventory
+                            </button>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-header">
+                                <h4>Food & Water</h4>
+                                <span class="resource-count">120 units</span>
+                            </div>
+                            <div class="resource-items">
+                                <div class="resource-item">
+                                    <span>Canned Food</span>
+                                    <span class="quantity">60 cases</span>
+                                </div>
+                                <div class="resource-item">
+                                    <span>Bottled Water</span>
+                                    <span class="quantity">40 cases</span>
+                                </div>
+                                <div class="resource-item">
+                                    <span>Dry Rations</span>
+                                    <span class="quantity">15 packs</span>
+                                </div>
+                                <div class="resource-item">
+                                    <span>Energy Bars</span>
+                                    <span class="quantity">5 boxes</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary btn-small btn-full" onclick="updateResource(3)">
+                                Update Inventory
+                            </button>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-header">
+                                <h4>Transportation</h4>
+                                <span class="resource-count">12 vehicles</span>
+                            </div>
+                            <div class="resource-items">
+                                <div class="resource-item">
+                                    <span>Ambulances</span>
+                                    <span class="quantity">3 vehicles</span>
+                                </div>
+                                <div class="resource-item">
+                                    <span>Trucks</span>
+                                    <span class="quantity">5 vehicles</span>
+                                </div>
+                                <div class="resource-item">
+                                    <span>Vans</span>
+                                    <span class="quantity">4 vehicles</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary btn-small btn-full" onclick="updateResource(4)">
+                                Update Inventory
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volunteers Tab -->
+                <div id="volunteers-tab" class="emergency-tab">
+                    <h2>Volunteer Coordination</h2>
+                    <button class="btn btn-primary" onclick="recruitVolunteers()" style="margin-bottom: 20px;">
+                        + Recruit Volunteers
+                    </button>
+
+                    <div class="volunteers-section">
+                        <h3>Active Volunteers (23)</h3>
+                        <div class="volunteers-grid">
+                            <div class="volunteer-card">
+                                <div class="volunteer-avatar">JD</div>
+                                <h4>John Doe</h4>
+                                <p class="volunteer-role">Medical Professional</p>
+                                <p class="volunteer-location">📍 Downtown Area</p>
+                                <p class="volunteer-status">Available</p>
+                                <button class="btn btn-success btn-small btn-full">Assign Task</button>
+                            </div>
+                            <div class="volunteer-card">
+                                <div class="volunteer-avatar">SM</div>
+                                <h4>Sarah Miller</h4>
+                                <p class="volunteer-role">Shelter Manager</p>
+                                <p class="volunteer-location">📍 riverside</p>
+                                <p class="volunteer-status">On Duty</p>
+                                <button class="btn btn-secondary btn-small btn-full">View Status</button>
+                            </div>
+                            <div class="volunteer-card">
+                                <div class="volunteer-avatar">MJ</div>
+                                <h4>Mike Johnson</h4>
+                                <p class="volunteer-role">Logistics</p>
+                                <p class="volunteer-location">📍 Central Hub</p>
+                                <p class="volunteer-status">Available</p>
+                                <button class="btn btn-success btn-small btn-full">Assign Task</button>
+                            </div>
+                            <div class="volunteer-card">
+                                <div class="volunteer-avatar">EM</div>
+                                <h4>Emma Wilson</h4>
+                                <p class="volunteer-role">Community Outreach</p>
+                                <p class="volunteer-location">📍 North Valley</p>
+                                <p class="volunteer-status">Available</p>
+                                <button class="btn btn-success btn-small btn-full">Assign Task</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Tab -->
+                <div id="analytics-tab" class="emergency-tab">
+                    <h2>Emergency Analytics</h2>
+                    
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>Response Time</h3>
+                            <p class="analytics-metric">2.5 hours</p>
+                            <p class="analytics-subtitle">Average response time to aid requests</p>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>People Helped</h3>
+                            <p class="analytics-metric">847</p>
+                            <p class="analytics-subtitle">Total individuals assisted this week</p>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Resource Efficiency</h3>
+                            <p class="analytics-metric">92%</p>
+                            <p class="analytics-subtitle">Utilization rate of available resources</p>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Active Partners</h3>
+                            <p class="analytics-metric">18</p>
+                            <p class="analytics-subtitle">Organizations in the network</p>
+                        </div>
+                    </div>
+
+                    <div class="analytics-section">
+                        <h3>Emergency Breakdown</h3>
+                        <div class="breakdown-list">
+                            <div class="breakdown-item">
+                                <span>🔥 Fire Incidents</span>
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-fill" style="width: 35%;"></div>
+                                </div>
+                                <span class="breakdown-value">35%</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>💧 Flood Events</span>
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-fill" style="width: 28%;"></div>
+                                </div>
+                                <span class="breakdown-value">28%</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>🌪️ Weather</span>
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-fill" style="width: 22%;"></div>
+                                </div>
+                                <span class="breakdown-value">22%</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>📍 Other</span>
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-fill" style="width: 15%;"></div>
+                                </div>
+                                <span class="breakdown-value">15%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="assets/emergency.js"></script>
+</body>
+</html>
